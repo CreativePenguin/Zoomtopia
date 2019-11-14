@@ -11,7 +11,7 @@ import com.stuypulse.stuylib.math.stream.filter.StreamFilter;
 public class WeightedMovingAverage implements StreamFilter {
 
     private double mValue; // Current Value
-    private double mWeight; // weight
+    private double mWeight; // Weight
 
     /**
      * Make Moving Average with based on exponent
@@ -26,18 +26,10 @@ public class WeightedMovingAverage implements StreamFilter {
     }
 
     /**
-     * @return current value
-     */
-    public double get() {
-        return mValue;
-    }
-
-    /**
      * @param next next value in stream
      * @return next value
      */
     public double get(double next) {
-        mValue += (next - mValue) / mWeight;
-        return get();
+        return mValue += (next - mValue) / mWeight;
     }
 }
