@@ -3,7 +3,7 @@ package com.stuypulse.stuylib.network.limelight;
 /**
  * Class that is used to return solve 3D
  * results from the limelight
- * 
+ *
  * @author Sam (sam.belliveau@gmail.com)
  */
 
@@ -18,7 +18,7 @@ public class Solve3DResult {
     private double mPitch;
     private double mYaw;
     private double mRoll;
-    
+
     /**
      * Initialize each part of the Solve3DResult
      * @param x x position

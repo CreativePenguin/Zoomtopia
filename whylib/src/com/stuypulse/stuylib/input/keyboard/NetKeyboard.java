@@ -5,12 +5,12 @@ import com.stuypulse.stuylib.network.NetworkTableWrapper;
 import java.util.Set;
 
 /**
- * This class lets you send and recieve 
+ * This class lets you send and recieve
  * keyboard information over network tables
- * 
+ *
  * Every other class will interact with the
  * network keyboards through this class
- * 
+ *
  * @author Sam (sam.belliveau@gmail.com)
  */
 
@@ -37,7 +37,7 @@ public class NetKeyboard {
         }
     }
 
-    
+
     /**
      * Table where key information is stored
      */
@@ -80,7 +80,7 @@ public class NetKeyboard {
     public void setKey(String key, boolean val) {
         mKeyboardTable.setBoolean(Constants.sanatize(key), val);
     }
-    
+
 
     /**
      * Gets if key is pressed
@@ -92,7 +92,7 @@ public class NetKeyboard {
     }
 
     /**
-     * Returns Set of Strings with the names 
+     * Returns Set of Strings with the names
      * of every key that is pressed
      * @return set of strings
      */

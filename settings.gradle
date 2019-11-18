@@ -1,4 +1,7 @@
 import org.gradle.internal.os.OperatingSystem
+rootProject.name = stuylib
+include 'swerve'
+include 'whylib'
 
 pluginManagement {
     repositories {

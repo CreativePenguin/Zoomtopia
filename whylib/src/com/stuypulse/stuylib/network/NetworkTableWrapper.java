@@ -11,11 +11,11 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 /**
  * The NetworkTableWrapper is a very fast way
  * to easily interface with a network table.
- * 
+ *
  * If a function you want is not implemented,
  * use getTable(), getRawEntry(), or getInstance()
  * to call the function yourself
- * 
+ *
  * @author Sam (sam.belliveau@gmail.com)
  */
 

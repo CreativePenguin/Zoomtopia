@@ -1,6 +1,8 @@
 plugins {
     id "java-library"
-    id "edu.wpi.first.GradleRIO" version "2019.1.1"
+    id 'idea'
+    id 'eclipse'
+    id 'com.diffplug.gradle.spotless' version '3.25.0'
 }
 
 sourceSets {
@@ -27,7 +29,7 @@ configurations {
    compile.extendsFrom shade
 }
 
-dependencies { 
+dependencies {
    compile wpi.deps.wpilib()
    compile wpi.deps.vendor.java()
 }

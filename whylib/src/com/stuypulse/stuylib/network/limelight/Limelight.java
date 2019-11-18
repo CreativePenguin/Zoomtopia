@@ -12,13 +12,13 @@ import com.stuypulse.stuylib.network.limelight.Solve3DResult;
 
 /**
  * This is a class that lets you interface with
- * the limelight network table. 
- * 
+ * the limelight network table.
+ *
  * @author Sam (sam.belliveau@gmail.com)
  */
 
 public class Limelight {
-    
+
     // Network Table used to contact Lime Light
     private static final NetworkTableInstance mTableInstance = NetworkTableInstance.getDefault();
     private static final NetworkTable mTable = mTableInstance.getTable("limelight");
@@ -40,7 +40,7 @@ public class Limelight {
     /**
      * @return if limelight is connected
      */
-    public static boolean isConnected() { 
+    public static boolean isConnected() {
         // Force an update and get current time
         mTimingTestEntryValue = !mTimingTestEntryValue; // flip test value
         mTimingTestEntry.forceSetBoolean(mTimingTestEntryValue);
@@ -73,7 +73,7 @@ public class Limelight {
     /* Commonly Used Contour Information */
     // Whether the limelight has any valid targets (0 or 1)
     private static final NetworkTableEntry mValidTargetEntry = mTable.getEntry("tv");
-    
+
     /**
      * Decides if a target shows up on limelight screen
      * @return If it has any target
@@ -96,7 +96,7 @@ public class Limelight {
     private static final NetworkTableEntry mXAngleEntry = mTable.getEntry("tx");
 
     /**
-     * 
+     *
      * @return Horizontal side length of the target
      */
     public static double getTargetXAngle() {
@@ -167,7 +167,7 @@ public class Limelight {
 
     /**
      * Sidelength of shortest side of the fitted bounding box (0 - 320 pixels)
-     * 
+     *
      * @return Shortest side length of target in pixels
      */
     public static double getShortestSidelength() {
@@ -179,7 +179,7 @@ public class Limelight {
 
     /**
      * Sidelength of longest side of the fitted bounding box (0 - 320 pixels)
-     * 
+     *
      * @return Longest side length of the target in pixels
      */
     public static double getLongestSidelength() {
@@ -191,7 +191,7 @@ public class Limelight {
 
     /**
      * Horizontal sidelength of the rough bounding box (0 - 320 pixels)
-     * 
+     *
      * @return Horizontal side length of target in pixels
      */
     public static double getHorizontalSidelength() {
@@ -203,7 +203,7 @@ public class Limelight {
 
     /**
      * Vertical sidelength of the rough bounding box (0 - 320 pixels)
-     * 
+     *
      * @return Vertical side length of target in pixels
      */
     public static double getVerticalSidelength() {
@@ -424,7 +424,7 @@ public class Limelight {
         mCameraStreamEntry.setNumber(stream.getCodeValue());
     }
 
-    
+
     // SNAPSHOT_MODE
     public enum SnapshotMode {
         STOP(0), // Don't take snapshots

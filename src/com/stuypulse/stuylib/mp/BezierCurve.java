@@ -13,7 +13,7 @@ public class BezierCurve {
         Vector2D out = new Vector2D(0, 0);
         out.x = a.x * preportion + b.x * (1.0 - preportion);
         out.y = a.y * preportion + b.y * (1.0 - preportion);
-        
+
         return out;
     }
 
@@ -21,7 +21,7 @@ public class BezierCurve {
     private static Vector2D getPosition(Vector2D[] points, double preportion) {
         // Make copy to do calculations on
         Vector2D[] lines = points.clone();
-        
+
         for(int max = points.length - 1; max > 0; --max)
             for(int i = 0; i < max; ++i)
                 lines[i] = average(lines[i], lines[i+1], preportion);

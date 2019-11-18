@@ -7,12 +7,12 @@ import com.stuypulse.stuylib.network.limelight.Limelight;
 /**
  * Do bluebox filtering here until limelight updates their code.
  * Just call hasValidTarget() to filter out errors
- * 
+ *
  * @author Kevin (k1029384756c@gmail.com)
  */
 
 class Filters {
-    
+
     // Toggle for posting to SmartDashboard
     public static boolean POST_TO_SMART_DASHBOARD = true;
 
