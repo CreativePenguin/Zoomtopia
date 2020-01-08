@@ -11,21 +11,19 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import com.stuypulse.stuylib.network.limelight.Solve3DResult;
 
 /**
- * This is a class that lets you interface with
- * the limelight network table. 
+ * This is a class that lets you interface with the limelight network table.
  * 
  * @author Sam (sam.belliveau@gmail.com)
  */
 
 public class Limelight {
-    
+
     // Network Table used to contact Lime Light
     private static final NetworkTableInstance mTableInstance = NetworkTableInstance.getDefault();
     private static final NetworkTable mTable = mTableInstance.getTable("limelight");
 
     // Toggle for posting to SmartDashboard
     public static boolean POST_TO_SMART_DASHBOARD = true;
-
 
     // Uses network tables to check status of limelight
     private static final NetworkTableEntry mTimingTestEntry = mTable.getEntry("TIMING_TEST_ENTRY");
@@ -40,7 +38,7 @@ public class Limelight {
     /**
      * @return if limelight is connected
      */
-    public static boolean isConnected() { 
+    public static boolean isConnected() {
         // Force an update and get current time
         mTimingTestEntryValue = !mTimingTestEntryValue; // flip test value
         mTimingTestEntry.forceSetBoolean(mTimingTestEntryValue);
@@ -59,8 +57,8 @@ public class Limelight {
             SmartDashboard.putNumber("Limelight Time Difference", timeDifference);
         }
 
-        if(MIN_WARNING_TIME < timeDifference && timeDifference < MAX_WARNING_TIME) {
-            double milli = (double)timeDifference / 1000.0;
+        if (MIN_WARNING_TIME < timeDifference && timeDifference < MAX_WARNING_TIME) {
+            double milli = (double) timeDifference / 1000.0;
 
             System.err.println("WARNING: Limelight has disconnected and is not responding!");
             System.err.println("         Limelight last updated " + milli + "ms ago!");
@@ -69,13 +67,13 @@ public class Limelight {
         return connected;
     }
 
-
     /* Commonly Used Contour Information */
     // Whether the limelight has any valid targets (0 or 1)
     private static final NetworkTableEntry mValidTargetEntry = mTable.getEntry("tv");
-    
+
     /**
      * Decides if a target shows up on limelight screen
+     * 
      * @return If it has any target
      */
     @SuppressWarnings("unused")
@@ -103,11 +101,11 @@ public class Limelight {
         return mXAngleEntry.getDouble(0);
     }
 
+
     // Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5 degrees)
     public static final double MIN_Y_ANGLE = -20.5;
     public static final double MAX_Y_ANGLE = 20.5;
     private static final NetworkTableEntry mYAngleEntry = mTable.getEntry("ty");
-
 
     /**
      * @return The vertical angle of the target
@@ -223,7 +221,6 @@ public class Limelight {
         return mTable.getEntry("tx" + target).getDouble(0);
     }
 
-
     /**
      * @param target Target to read Y Angle from
      * @return Y Angle of corresponding target
@@ -231,7 +228,6 @@ public class Limelight {
     public static double getRawTargetYAngle(int target) {
         return mTable.getEntry("ty" + target).getDouble(0);
     }
-
 
     /**
      * @param target Target to read Area from
@@ -244,7 +240,6 @@ public class Limelight {
         return Math.min(mTable.getEntry("ta" + target).getDouble(0) / 100.0, 1);
     }
 
-
     /**
      * @param target Target to read Skew from
      * @return Skew of corresponding target
@@ -252,7 +247,6 @@ public class Limelight {
     public static double getRawTargetSkew(int target) {
         return mTable.getEntry("ts" + target).getDouble(0);
     }
-
 
     /**
      * @param crosshair Crosshair to read coords from
@@ -262,7 +256,6 @@ public class Limelight {
         return mTable.getEntry("cx" + crosshair).getDouble(0);
     }
 
-
     /**
      * @param crosshair Crosshair to read coords from
      * @return Y Coordinate of corresponding crosshair
@@ -271,17 +264,20 @@ public class Limelight {
         return mTable.getEntry("cy" + crosshair).getDouble(0);
     }
 
+
     /* Solve 3D */
     private static final NetworkTableEntry mSolve3DEntry = mTable.getEntry("camtran");
     private static final double[] mDefaultSolve3DArray = new double[6];
 
     /**
      * Get Solve3D Result from network table
+     * 
      * @return Solve 3D Result
      */
     public static Solve3DResult getSolve3D() {
         return new Solve3DResult(mSolve3DEntry.getDoubleArray(mDefaultSolve3DArray));
     }
+
 
     /* Custom Grip Values */
     // Return data given by custom GRIP pipeline
@@ -293,7 +289,6 @@ public class Limelight {
         return mTable.getEntry(element).getDouble(0);
     }
 
-
     /**
      * @param element Name of Number to set on Network Table
      * @param value   Value to set the Number on the Network Table to
@@ -303,7 +298,6 @@ public class Limelight {
         return mTable.getEntry(element).setNumber(value);
     }
 
-
     /**
      * @param element Name of String provided by GRIP Pipeline
      * @return String provided by GRIP Pipeline
@@ -311,7 +305,6 @@ public class Limelight {
     public static String getCustomString(String element) {
         return mTable.getEntry(element).getString("");
     }
-
 
     /**
      * @param element Name of String to set on Network Table
